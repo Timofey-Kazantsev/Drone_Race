@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ContrC : MonoBehaviour
 {
-    private int sec = 0;
-    private int min = 0;
+    private int g_sec = 0;
+    private int g_min = 0;
     public int delta = 0;
+    public int prevCheckpointIndex;
     public List<Checp> checkpoints = new List<Checp>(); // Список чекпоинтов
     public int currentCheckpointIndex; // Индекс текущего чекпоинта
+    public List<int> timesGo = new List<int>();
+    public Material checkpointMaterial;
 
     void Start()
     {
@@ -20,37 +23,53 @@ public class ContrC : MonoBehaviour
         if (index >= 0 && index <= checkpoints.Count - 1)
         {
             currentCheckpointIndex = index;
-            Debug.Log($"Активирован чекпоинт с индексом: {index}");
             delta = 1;
+            prevCheckpointIndex = index - 1;
+            timesGo.Add(g_sec);
+            Debug.Log(timesGo[currentCheckpointIndex]);
+            // Получаем компонент Renderer у текущего чекпоинта
+            Renderer checkpointRenderer = checkpoints[index + 1].GetComponent<Renderer>();
+
+            if (checkpointRenderer != null && checkpointMaterial != null)
+            {
+                // Устанавливаем новый материал для чекпоинта
+                checkpointRenderer.material = checkpointMaterial;
+            }
         }
         else
         {
+            timesGo.Add(g_sec);
+            for (int i = 1; i < timesGo.Count; i++)
+            {
+                int time_passed = timesGo[i];
+                // Здесь вы можете выполнять действия с индексами пройденных чекпоинтов, например:
+                Debug.Log("Пройден чекпоинт со временем: " + time_passed);
+            }
             StopCoroutine(RaceTime());
-            Debug.Log($" чекпоинт с индексом: {index}");
             delta = 0;
         }
     }
 
-    IEnumerator RaceTime() 
+    IEnumerator RaceTime()
     {
         while (true)
         {
-            if (sec == 59)
+            if (g_sec == 59)
             {
-                min++;
-                sec = -1;
-                Debug.Log(sec);
-                Debug.Log(min);
+                g_min++;
+                g_sec = -1;
+                Debug.Log(g_sec);
+                Debug.Log(g_min);
             }
-            sec += delta;
-            Debug.Log(sec);
+            g_sec += delta;
+            Debug.Log(g_sec);
             yield return new WaitForSeconds(1);
-            
+
         }
     }
     // Метод Update, где выводим currentCheckpointIndex
     private void Update()
     {
-        
+
     }
 }
