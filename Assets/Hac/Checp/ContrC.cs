@@ -4,29 +4,39 @@ using UnityEngine;
 
 public class ContrC : MonoBehaviour
 {
-    private int sec = 0;
-    private int min = 0;
+    private int g_sec = 0;
+    private int g_min = 0;
     public int delta = 0;
+    public int prevCheckpointIndex;
     public List<Checp> checkpoints = new List<Checp>(); // Список чекпоинтов
     public int currentCheckpointIndex; // Индекс текущего чекпоинта
+    public List<int> timesGo = new List<int>();
 
     void Start()
     {
         StartCoroutine(RaceTime());
-    }
+}
     // Метод для активации чекпоинта с указанным индексом
     public void ActivateCheckpoint(int index)
     {
         if (index >= 0 && index <= checkpoints.Count - 1)
         {
             currentCheckpointIndex = index;
-            Debug.Log($"Активирован чекпоинт с индексом: {index}");
             delta = 1;
+            prevCheckpointIndex = index - 1;
+            timesGo.Add(g_sec);
+            Debug.Log(timesGo[currentCheckpointIndex]);
         }
         else
         {
+            timesGo.Add(g_sec);
+            for (int i = 1; i < timesGo.Count; i++)
+            {
+                int time_passed = timesGo[i];
+                // Здесь вы можете выполнять действия с индексами пройденных чекпоинтов, например:
+                Debug.Log("Пройден чекпоинт со временем: " + time_passed);
+            }
             StopCoroutine(RaceTime());
-            Debug.Log($" чекпоинт с индексом: {index}");
             delta = 0;
         }
     }
@@ -35,15 +45,14 @@ public class ContrC : MonoBehaviour
     {
         while (true)
         {
-            if (sec == 59)
+            if (g_sec == 59)
             {
-                min++;
-                sec = -1;
-                Debug.Log(sec);
-                Debug.Log(min);
+                g_min++;
+                g_sec = -1;
+                Debug.Log(g_sec);
+                Debug.Log(g_min);
             }
-            sec += delta;
-            Debug.Log(sec);
+            g_sec += delta;
             yield return new WaitForSeconds(1);
             
         }

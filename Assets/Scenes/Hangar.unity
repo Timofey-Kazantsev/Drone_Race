@@ -4524,10 +4524,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1607080f9ce8c48b65d3e2151345cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delta: 0
+  prevCheckpointIndex: 0
   checkpoints:
   - {fileID: 1898994101}
   - {fileID: 1762004885}
   currentCheckpointIndex: 0
+  timesGo: 
 --- !u!4 &979502884
 Transform:
   m_ObjectHideFlags: 0
@@ -11193,7 +11196,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: joystick_turned_on
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
@@ -11223,7 +11226,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: inputEditorSelection
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
