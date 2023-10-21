@@ -5,7 +5,8 @@ using UnityEngine;
 public class Checp : MonoBehaviour
 {
     public int checkpointIndex; // Индекс чекпоинта
-    ContrC controllerC = new ContrC();
+    public ContrC controllerC; // Ссылка на объект ContrC
+
     public void Activate()
     {
         // Ваши действия при активации чекпоинта (например, сохранение игры)
@@ -18,3 +19,4 @@ public class Checp : MonoBehaviour
         Debug.Log("asd");
     }
 }
+
