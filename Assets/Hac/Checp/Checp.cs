@@ -17,23 +17,13 @@ public class Checp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         controllerC.ActivateCheckpoint(checkpointIndex);
+        Debug.Log("asd");
         Renderer objectRenderer = GetComponent<Renderer>(); // Получаем компонент Renderer текущего объекта
 
         if (objectRenderer != null && newMaterial != null)
         {
             objectRenderer.material = newMaterial; // Устанавливаем новый материал
         }
-    }
-    private void Start()
-    {
-        // Получаем компонент Transform чекпоинта
-        Transform checkpointTransform = transform;
-
-        // Получаем позицию чекпоинта
-        Vector3 checkpointPosition = checkpointTransform.position;
-
-        // Теперь у вас есть координаты чекпоинта в переменной checkpointPosition
-        Debug.Log("Координаты чекпоинта: " + checkpointPosition);
     }
 }
 
