@@ -6,6 +6,7 @@ public class Checp : MonoBehaviour
 {
     public int checkpointIndex; // Индекс чекпоинта
     public ContrC controllerC; // Ссылка на объект ContrC
+    public Material newMaterial; // Укажите новый материал, который будет установлен при активации триггера
 
     public void Activate()
     {
@@ -17,6 +18,12 @@ public class Checp : MonoBehaviour
     {
         controllerC.ActivateCheckpoint(checkpointIndex);
         Debug.Log("asd");
+        Renderer objectRenderer = GetComponent<Renderer>(); // Получаем компонент Renderer текущего объекта
+
+        if (objectRenderer != null && newMaterial != null)
+        {
+            objectRenderer.material = newMaterial; // Устанавливаем новый материал
+        }
     }
 }
 
