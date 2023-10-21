@@ -20,15 +20,18 @@ public class ContrC : MonoBehaviour
     // Метод для активации чекпоинта с указанным индексом
     public void ActivateCheckpoint(int index)
     {
-        if (index >= 0 && index <= checkpoints.Count - 1)
+        if (index >= 0 && index <= checkpoints.Count - 2)
         {
             currentCheckpointIndex = index;
             delta = 1;
             prevCheckpointIndex = index - 1;
             timesGo.Add(g_sec);
-            Debug.Log(timesGo[currentCheckpointIndex]);
+            Renderer checkpointRenderer = null;
             // Получаем компонент Renderer у текущего чекпоинта
-            Renderer checkpointRenderer = checkpoints[index + 1].GetComponent<Renderer>();
+            if (index != checkpoints.Count - 1)
+            {
+                checkpointRenderer = checkpoints[index + 1].GetComponent<Renderer>(); // Убрано лишнее объявление Renderer
+            }
 
             if (checkpointRenderer != null && checkpointMaterial != null)
             {
@@ -39,7 +42,7 @@ public class ContrC : MonoBehaviour
         else
         {
             timesGo.Add(g_sec);
-            for (int i = 1; i < timesGo.Count; i++)
+            for (int i = 1; i < timesGo.Count - 1; i++)
             {
                 int time_passed = timesGo[i];
                 // Здесь вы можете выполнять действия с индексами пройденных чекпоинтов, например:
@@ -47,8 +50,11 @@ public class ContrC : MonoBehaviour
             }
             StopCoroutine(RaceTime());
             delta = 0;
+            Times_pass(timesGo);
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
+
 
     IEnumerator RaceTime()
     {
@@ -62,7 +68,6 @@ public class ContrC : MonoBehaviour
                 Debug.Log(g_min);
             }
             g_sec += delta;
-            Debug.Log(g_sec);
             yield return new WaitForSeconds(1);
 
         }
@@ -71,5 +76,27 @@ public class ContrC : MonoBehaviour
     private void Update()
     {
 
+    }
+    private void Times_pass(List<int> timesGo)
+    {
+        List<int> differences = new List<int>();
+
+        // Проходим по списку, начиная с первого элемента (индекс 0)
+        for (int i = 0; i < timesGo.Count; i++)
+        {
+            if(i+1 < timesGo.Count)
+            {
+                // Вычисляем разницу между текущим и следующим элементами
+                int diff = timesGo[i + 1] - timesGo[i];
+                differences.Add(diff); // Используйте Add, чтобы добавить значение в список
+            }
+            
+        }
+
+        // Выводим результат - массив разниц между элементами
+        foreach (int diff in differences)
+        {
+            Debug.Log(diff);
+        }
     }
 }
