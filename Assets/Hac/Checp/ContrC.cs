@@ -12,6 +12,7 @@ public class ContrC : MonoBehaviour
     public int currentCheckpointIndex; // Индекс текущего чекпоинта
     public List<int> timesGo = new List<int>();
     public Material checkpointMaterial;
+    public MenuControllerTime menuController;
 
     void Start()
     {
@@ -51,7 +52,10 @@ public class ContrC : MonoBehaviour
             StopCoroutine(RaceTime());
             delta = 0;
             Times_pass(timesGo);
-            UnityEditor.EditorApplication.isPlaying = false;
+            if (menuController != null)
+            {
+                menuController.openMenu();
+            }
         }
     }
 
