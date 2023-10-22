@@ -9,7 +9,9 @@ public class IPDeditor : MonoBehaviour
     // Start is called before the first frame update
 
     private TextMesh ipdText;
+    private TextMesh timeText;
     private float ipd = 64;
+    public ContrC contrC;
 
     public void incIPD()
     {
@@ -36,11 +38,17 @@ public class IPDeditor : MonoBehaviour
     void Start()
     {
         ipdText = GameObject.Find("IPDtext").GetComponent<TextMesh>();
+        timeText = GameObject.Find("timeText").GetComponent<TextMesh>();
+        contrC = GameObject.FindObjectOfType<ContrC>();
 
         if (PlayerPrefs.HasKey("ipd"))
         {
             ipd = PlayerPrefs.GetFloat("ipd");
             applyIPD();
+        }
+        if (contrC != null)
+        {
+            timeText.text = String.Format("Время промежутков: {0} мм", contrC.timesGo);
         }
     }
 
