@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ContrC : MonoBehaviour
 {
-    private int g_sec = 0;
-    private int g_min = 0;
+    public int g_sec = 0;
+    public int g_min = 0;
     public int delta = 0;
     public int prevCheckpointIndex;
     public List<Checp> checkpoints = new List<Checp>(); // Список чекпоинтов
     public int currentCheckpointIndex; // Индекс текущего чекпоинта
     public List<int> timesGo = new List<int>();
     public Material checkpointMaterial;
-    public MenuControllerTime menuController;
+    public string strD;
+    public List<int> differences;
+    public string allTime;
 
     void Start()
     {
@@ -51,11 +53,7 @@ public class ContrC : MonoBehaviour
             }
             StopCoroutine(RaceTime());
             delta = 0;
-            Times_pass(timesGo);
-            if (menuController != null)
-            {
-                menuController.openMenu();
-            }
+            ///Times_pass(timesGo);
         }
     }
 
@@ -76,31 +74,28 @@ public class ContrC : MonoBehaviour
 
         }
     }
-    // Метод Update, где выводим currentCheckpointIndex
     private void Update()
     {
 
     }
-    private void Times_pass(List<int> timesGo)
+  /*  private void Times_pass(List<int> timesGo)
     {
         List<int> differences = new List<int>();
-
-        // Проходим по списку, начиная с первого элемента (индекс 0)
         for (int i = 0; i < timesGo.Count; i++)
         {
             if(i+1 < timesGo.Count)
             {
-                // Вычисляем разницу между текущим и следующим элементами
                 int diff = timesGo[i + 1] - timesGo[i];
-                differences.Add(diff); // Используйте Add, чтобы добавить значение в список
+                differences.Add(diff); 
             }
             
         }
-
-        // Выводим результат - массив разниц между элементами
-        foreach (int diff in differences)
+        for (int i = 0; i < differences.Count - 1; i++)
         {
-            Debug.Log(diff);
+            string strD = string.Format("{0} участок - {1} секунд\n", i, differences[i]);
+            Debug.Log(strD);
         }
-    }
+        string allTime = string.Format("Общее время - {0} минут {1} секунд", g_min, g_sec);
+        Debug.Log(allTime);
+    }*/
 }

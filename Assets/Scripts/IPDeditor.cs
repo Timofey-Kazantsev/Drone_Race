@@ -12,6 +12,7 @@ public class IPDeditor : MonoBehaviour
     private TextMesh timeText;
     private float ipd = 64;
     public ContrC contrC;
+    public string strD;
 
     public void incIPD()
     {
@@ -46,10 +47,24 @@ public class IPDeditor : MonoBehaviour
             ipd = PlayerPrefs.GetFloat("ipd");
             applyIPD();
         }
-        if (contrC != null)
+        List<int> differences = new List<int>();
+        for (int i = 0; i < contrC.timesGo.Count; i++)
         {
-            timeText.text = String.Format("Время промежутков: {0} мм", contrC.timesGo);
+            if (i + 1 < contrC.timesGo.Count)
+            {
+                int diff = contrC.timesGo[i + 1] - contrC.timesGo[i];
+                differences.Add(diff);
+            }
+
         }
+        Debug.Log(differences.Count);
+        for (int i = 0; i < differences.Count - 1; i++)
+        {
+            string strD = string.Format("\n{0} участок - {1} секунд", i, differences[i]);
+            timeText.text += strD;
+        }
+        string allTime = string.Format("\nОбщее время - {0} минут {1} секунд", contrC.g_min, contrC.g_sec);
+        timeText.text += allTime;
     }
 
     public void Quit()
