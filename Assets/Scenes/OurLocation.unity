@@ -29707,13 +29707,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
+      propertyPath: upButton
+      value: 333
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
+        type: 3}
       propertyPath: customFeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: forceUpHover
-      value: 143.5
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
@@ -29783,7 +29788,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: joystick_turned_on
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
@@ -29813,7 +29818,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: inputEditorSelection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
@@ -29823,7 +29828,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: profiles.Array.data[2].forceUpHover
-      value: 143.5
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
