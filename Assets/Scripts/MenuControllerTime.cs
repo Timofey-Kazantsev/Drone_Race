@@ -27,13 +27,6 @@ public class MenuControllerTime : MonoBehaviour
         switchFPV();
     }
 
-    void Update()
-    {
-        if (ViarusInput.GetKeyDown(ViarusTask.CKeyEvent.KEYCODE_DPAD_CENTER) && !isMenuOpened)
-        {
-            openMenu();
-        }
-    }
 
     public void switchFPV()
     {
