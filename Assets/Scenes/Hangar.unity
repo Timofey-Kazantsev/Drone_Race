@@ -10785,7 +10785,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: joystick_turned_on
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
@@ -10815,7 +10815,7 @@ PrefabInstance:
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
       propertyPath: inputEditorSelection
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114836510984998004, guid: 6e95cc9cf1feb48dd9b21917782302a8,
         type: 3}
@@ -11497,18 +11497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c826c6b1848fa49b06446110eeb6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dCam: {fileID: 0}
-  FPVParent: {fileID: 5307242012568688245}
-  head: {fileID: 0}
-  MainCam: {fileID: 0}
-  VrsSDK: {fileID: 0}
-  Menu: {fileID: 0}
-  JoyInfo: {fileID: 0}
-  joy: {fileID: 0}
-  isMenuOpened: 0
-  prevCamPos: {x: 0, y: 0, z: 0}
-  preCamOrient: {x: 0, y: 0, z: 0, w: 0}
-  debug: 0
 --- !u!23 &5329634235621090850
 MeshRenderer:
   m_ObjectHideFlags: 0

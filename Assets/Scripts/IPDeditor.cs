@@ -32,6 +32,7 @@ public class IPDeditor : MonoBehaviour
     {
         PlayerPrefs.SetFloat("ipd", ipd);
         ipdText.text = String.Format("Межзрачковое расстояние: {0} мм", ipd);
+        timeText.text = String.Format("Время");
         var dist = ipd / 1000.0f;
         VrsViewer.Instance.SetIpd(dist);
         List<int> differences = new List<int>();
