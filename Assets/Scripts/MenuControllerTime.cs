@@ -15,10 +15,15 @@ public class MenuControllerTime : MonoBehaviour
 
     void Start()
     {
+        joy = GameObject.Find("Drone_White").GetComponent<CalibratedJoyInput>();
         MainCam = GameObject.Find("MainCamera");
         VrsSDK = GameObject.Find("ViarusSDK");
-        Menu = GameObject.Find("MenuTime");
+        Menu = GameObject.Find("Menu");
+        JoyInfo = GameObject.Find("JoyInfo");
         Menu.SetActive(false);
+        JoyInfo.SetActive(false);
+        JoyInfo.transform.parent = MainCam.transform;
+        JoyInfo.transform.localPosition = new Vector3(0, 0, 1.5f);
         VrsViewer.Instance.GazeApi(GazeTag.Hide);
         dCam = MainCam.GetComponent<DroneCamera>();
         head = MainCam.GetComponent<Vrs.Internal.VrsHead>();
@@ -73,6 +78,7 @@ public class MenuControllerTime : MonoBehaviour
         dCam.enabled = false;
         VrsViewer.Instance.GazeApi(GazeTag.Show);
         head.SetTrackRotation(true);
+        joy.suppress = true;
         Menu.SetActive(true);
         MainCam.GetComponent<Camera>().cullingMask = -1;
         Vector3 newPos = MainCam.transform.forward * 3.5f;
@@ -85,6 +91,7 @@ public class MenuControllerTime : MonoBehaviour
         VrsViewer.Instance.ShowFPS = false;
         isMenuOpened = false;
         VrsViewer.Instance.GazeApi(GazeTag.Hide);
+        joy.suppress = false;
         Menu.SetActive(false);
     }
 }
